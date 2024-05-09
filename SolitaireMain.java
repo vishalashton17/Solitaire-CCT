@@ -1,4 +1,3 @@
-
 public class SolitaireMain {
     public static void main(String[] args) {
         System.out.println("Hello World!");
@@ -7,8 +6,26 @@ public class SolitaireMain {
         System.out.println("Hello again");
         System.out.println("Hello again");
         System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
+        System.out.println("Hello again");
         
         
     }
 }
-    
