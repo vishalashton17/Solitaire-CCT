@@ -11,7 +11,7 @@ public class Diamonds extends Card {
     this.scoreType = scoreType;
     }
 
-  public int CalcScore() {
+  public int CalcScore(String scoreType) {
     int score;
     score = scoreType.length();
     return score;
