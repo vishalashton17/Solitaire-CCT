@@ -11,7 +11,7 @@ public class Spades extends Card {
     this.scoreType = scoreType;
     }
 
-  public int CalcScore() {
+  public int CalcScore(double scoreType) {
     int score;
     score = (int)Math.pow(scoreType + 10, 2 );
     return score;
