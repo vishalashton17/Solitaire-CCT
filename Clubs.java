@@ -11,7 +11,7 @@ public class Clubs extends Card {
     this.scoreType = scoreType;
     }
 
-  public int CalcScore() {
+  public int CalcScore(char scoreType) {
     int score;
     score = scoreType/10;
     return score;
