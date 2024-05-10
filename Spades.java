@@ -10,7 +10,9 @@ public class Spades extends Card {
     super(number, pattern, color);
     this.scoreType = scoreType;
     }
-
+    /* To calcualte the score
+    * @param scoreType       - The score type of the card, used to calculate score
+    * @returns score         - The score calculated rom scoreType*/
   public int CalcScore(double scoreType) {
     int score;
     score = (int)Math.pow(scoreType + 10, 2 );
