@@ -10,9 +10,9 @@ public class Clubs extends Card {
     super(number, pattern, color);
     this.scoreType = scoreType;
     }
-    /* Get the Card color
-    * @param scoreType - The score type of the card, used to calculate score
-    * @return          - The score */
+    /* To calcualte the score
+    * @param scoreType       - The score type of the card, used to calculate score
+    * @returns score         - The score calculated rom scoreType*/
   public int CalcScore(char scoreType) {
     int score;
     score = scoreType/10;
