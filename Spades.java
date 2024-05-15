@@ -1,4 +1,4 @@
-// Developed by Andy
+// Developed by Vishal
 public class Spades extends Card {
     double scoreType;
     /* To instantiate a Spades object
