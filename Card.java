@@ -22,15 +22,17 @@ public Card( int number, String pattern, String color) {
     return number;
   }
   /* Get the Card pattern
-   * @return - The car code */
+   * @return - The card pattern */
   public String GetPattern() {
     return pattern;
   }
   /* Get the Card color
-   * @return - The car code */
+   * @return - The card color */
   public String GetColor() {
     return color;
   }
+  /* Get the Card color
+   * @return - The score */
   public abstract int CalcScore();
   
 }
