@@ -10,7 +10,9 @@ public class Diamonds extends Card {
     super(number, pattern, color);
     this.scoreType = scoreType;
     }
-
+    /* Get the Card color
+    * @param scoreType - The score type of the card, used to calculate score
+    * @return          - The score */
   public int CalcScore(String scoreType) {
     int score;
     score = scoreType.length();
