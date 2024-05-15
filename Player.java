@@ -13,13 +13,13 @@ public class Player {
    /* Gets the player's name
     * @return - The name of the player */
    public String GetName() {
-     return name;   // Dummy return value, needs to be changed
+     return name;
    }
    
    /* Gets the players score 
     * @return - The player's score */
    public int GetScore() {
-     return score;   // Dummy return value, needs to be changed
+     return score;
    }
    
    /* Add scores to the player's exiting score
