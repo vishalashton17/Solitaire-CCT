@@ -12,7 +12,7 @@ public class Spades extends Card {
     }
     /* To calcualte the score
     * @param scoreType       - The score type of the card, used to calculate score
-    * @returns score         - The score calculated rom scoreType*/
+    * @returns score         - The score calculated from scoreType*/
   public int CalcScore(double scoreType) {
     int score;
     score = (int)Math.pow(scoreType + 10, 2 );
