@@ -1,4 +1,4 @@
-// Developed by Andy
+// Developed by Vishal
 public class Clubs extends Card {
     char scoreType;
     /* To instantiate a Clubs object
