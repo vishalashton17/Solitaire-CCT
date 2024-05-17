@@ -6,11 +6,6 @@ public class Displayer {
 
     }
     
-    //====================== PRIVATE METHOD ======================//
-    /* (Place your Private Methods here) */
-
-
-
     //====================== PUBLIC METHOD =======================//
     /* Displays the game title screen */
     public void GameHeader() {
