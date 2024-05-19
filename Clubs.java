@@ -13,7 +13,7 @@ public class Clubs extends Card {
     /* To calcualte the score
     * @param scoreType       - The score type of the card, used to calculate score
     * @returns score         - The score calculated from scoreType*/
-  public int CalcScore(char scoreType) {
+  public int CalcScore() {
     int score;
     score = scoreType/10;
     return score;

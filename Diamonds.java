@@ -13,7 +13,7 @@ public class Diamonds extends Card {
     /* To calcualte the score
     * @param scoreType       - The score type of the card, used to calculate score
     * @returns score         - The score calculated from scoreType*/
-  public int CalcScore(String scoreType) {
+  public int CalcScore() {
     int score;
     score = scoreType.length();
     return score;

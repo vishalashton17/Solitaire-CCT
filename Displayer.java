@@ -44,7 +44,7 @@ public class Displayer {
     
     /* Displays the store on the screen
      * @param store - The array that contains Card objects representing the store */
-    public void DisplayStore(Card[] store) {
+    public void DisplayWa(Card[][] waste) {
       
     }
   }

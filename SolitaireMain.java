@@ -28,18 +28,16 @@ public class SolitaireMain {
             }
         } while (rounds <= 0);
 
-        solitaire = new Solitaire(); // Initialize Solitaire object
+        sol = new Solitaire(); // Initialize Solitaire object
 
         // Initialize the game
-        solitaire.InitializeGame();
+        sol.InitializeGame();
 
         // Display the initial game state
-        displayer.DisplayBoard(sol.getBoard());
-        displayer.DisplayStockpile(sol.getStockpile());
-        displayer.DisplayStore(sol.getStore());
+        displayer.DisplayBoard(sol.GetBoard());
+        displayer.DisplayStockpile(sol.GetStockpile());
+        displayer.DisplayWaste(sol.GetWaste());
 
         input.close();
     }
-}
-}
 }

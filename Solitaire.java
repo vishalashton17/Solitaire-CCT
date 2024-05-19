@@ -2,8 +2,8 @@
 public class Solitaire {
     public final static int DEFAULT_ROUND = 1;  // The default round number 
 
-    private Card[] board;            // Array to represent the game board
-    private Card[] waste;            // Array to represent the waste pile
+    private Card[][] board;            // Array to represent the game board
+    private Card[][] waste;            // Array to represent the waste pile
     private Card[] stockpile;        // Array to represent the stockpile
     private Player[] allPlayers;     // An array that stores all the player objects
     private int round;               // Keeps track of the current round
@@ -71,6 +71,20 @@ public class Solitaire {
     public void AddScore() {
 
     }
+    public Card[][] GetBoard(){
+      return board;
+    }
+    public Card[][] GetWaste(){
+      return waste;
+    }
+    public Card[] GetStockpile(){
+      return stockpile;
+    }
+    public Player[] GetPlayers(){
+      return allPlayers;
+    }
+    public int GetRound(){
+      return round;
+    }
 
     }
-  }
