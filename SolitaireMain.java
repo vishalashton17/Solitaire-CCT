@@ -35,7 +35,7 @@ public class SolitaireMain {
 
         // Display the initial game state
         displayer.DisplayBoard(sol.GetBoard());
-        displayer.DisplayStockpile(sol.GetStockpile());
+        displayer.DisplayStockpile(sol.GetStockpile(), sol.GetCurrStockpilePos());
         displayer.DisplayWaste(sol.GetWaste());
 
         input.close();
