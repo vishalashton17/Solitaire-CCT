@@ -12,7 +12,10 @@ public class Solitaire {
     //======================= CONSTRUCTOR =======================//
     // Initialize the game's instance variables. 
     public Solitaire() {
-      
+      currCardPos = 0;
+      board = new Card[13][7];
+      waste = new Card[13][4];
+      stockpile = new Card[24];
     }
 
     //====================== PRIVATE METHOD =======================//
@@ -44,8 +47,8 @@ public class Solitaire {
     
     /* Get the current card from the stockpile
      * @return - The current card from the stockpile */
-    public Card GetCurrStockpileCard() {
-      return null;   // Dummy return value
+    public int GetCurrStockpilePos() {
+      return currCardPos;
     }
     
     // Initializes the game
@@ -57,14 +60,14 @@ public class Solitaire {
      * @param card - The card to be moved
      * @return - The number of points gained */
     public int MoveCardFromStore(Card card) {
-      return 0;   // Dummy return value
+      return 0;
     }
     
     /* Checks if the game is won
      * @return - true if the game is won
                - false otherwise */
     public boolean CheckIfWon() {
-      return false;   // Dummy return value
+      return false;
     }
     
     /* Adds score to the game */
@@ -84,6 +87,9 @@ public class Solitaire {
       return allPlayers;
     }
     public int GetRound(){
+      return round;
+    }
+    public int GetCurr(){
       return round;
     }
 
