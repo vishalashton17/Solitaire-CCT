@@ -39,7 +39,7 @@ public class Displayer {
             System.out.println(i);
             for (int k = 0; k<7; k++){
                 if (board[i][k] == null){
-                    System.out.print(k +" EMPTY " +i);
+                    System.out.print(k +" EMPTY " +i + " ");
                 }
                 else {
                 System.out.println(board[i][k].GetNumber());
@@ -70,7 +70,7 @@ public class Displayer {
             System.out.println("");
             for (int k = 0; k<4; k++){
                 if (waste[i][k] == null){
-                    System.out.print(k +" EMPTY " +i);
+                    System.out.print(k +" EMPTY " +i + " ");
                 }
                 else{
                 System.out.println(waste[i][k].GetNumber());    
