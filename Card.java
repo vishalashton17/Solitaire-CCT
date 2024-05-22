@@ -3,6 +3,7 @@ public abstract class Card {
     private int number;
     private String pattern;
     private String color;
+    private int facing; // to store if the card is facing up or down. 0 is facing down. 1 is facing up
     //============== Constructor ===============
   /* Default constructor for initiating a Car object */
 
@@ -14,6 +15,7 @@ public Card( int number, String pattern, String color) {
     this.number = number;
     this.pattern = pattern;
     this.color = color;
+    facing = 0;
 }
 //============= Public Methods ================   
   /* Get the Card number
