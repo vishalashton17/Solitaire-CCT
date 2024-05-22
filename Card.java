@@ -33,6 +33,11 @@ public Card( int number, String pattern, String color) {
   public String GetColor() {
     return color;
   }
+    /* Get where the Card is facing
+   * @return - The where card facing 0 for down, 1 for up. */
+  public int GetColor() {
+    return facing;
+  }
   /* Get the Card color
    * @return - The score */
   public abstract int CalcScore();
