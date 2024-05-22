@@ -35,7 +35,7 @@ public Card( int number, String pattern, String color) {
   }
     /* Get where the Card is facing
    * @return - The where card facing 0 for down, 1 for up. */
-  public int GetColor() {
+  public int GetFacing() {
     return facing;
   }
   /* Get the Card color
