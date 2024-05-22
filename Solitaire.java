@@ -6,6 +6,7 @@ public class Solitaire {
     private Card[][] waste;            // Array to represent the waste pile
     private Card[] stockpile;        // Array to represent the stockpile
     private Player[] allPlayers;     // An array that stores all the player objects
+    private Player currPlayer;       // keeps track of the current player
     private int round;               // Keeps track of the current round
     private int currCardPos;         // Keeps track of the current card position
     private Card[] temp;        // Array to store cards when they are first created
