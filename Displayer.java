@@ -33,28 +33,182 @@ public class Displayer {
     /* Displays the game board on the screen
      * @param board - The 2D array that contains Card objects representing the board */
     public void DisplayBoard(Card[][] board) {
-        System.out.print("BOARD");
-        System.out.print("==============================================");
+        System.out.println("BOARD");
+        System.out.println("===================================================================================================");
         for(int i = 0; i<13 ; i++){
-            System.out.println(i);
-            for (int k = 0; k<7; k++){
-                if (board[i][k] == null){
-                    System.out.print(k +" EMPTY " +i + " ");
-                }
-                else {
-                System.out.println(board[i][k].GetNumber());
-                System.out.println(board[i][k].GetColor());
-                System.out.println(board[i][k].GetPattern());
-                System.out.print("------------------------------------------------");
-                }
+            // printing the number of the cards
+            if ( board[i][0] != null){
+                System.out.printf("| %10d  ", board[i][0].GetNumber());
             }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][1] != null){
+                System.out.printf("| %10d  ", board[i][1].GetNumber());
+            }
+            else if (board[i][1] == null || board[i][1].GetFacing() == 0){
+                System.out.print("Facing down");
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][2] != null){
+                System.out.printf("| %10d  ", board[i][2].GetNumber());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][3] != null){
+                System.out.printf("| %10d  ", board[i][3].GetNumber());
+            }
+            else {
+                System.out.print("|             ");
+            }
+            
+            if ( board[i][4] != null){
+                System.out.printf("| %10d  ", board[i][4].GetNumber());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][5] != null){
+                System.out.printf("| %10d  ", board[i][5].GetNumber());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][6] != null){
+                System.out.printf("| %10d  ", board[i][6].GetNumber());
+                System.out.print("|" );
+                System.out.println("");
+            }
+            else {
+                System.out.print("|             |");
+                System.out.println("");
+            }
+
+
+
+            // printing the color of the cards
+            if ( board[i][0] != null){
+                System.out.printf("| %10s  ", board[i][0].GetColor());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][1] != null){
+                System.out.printf("| %10s  ", board[i][1].GetColor());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][2] != null){
+                System.out.printf("| %10s  ", board[i][2].GetColor());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][3] != null){
+                System.out.printf("| %10s  ", board[i][3].GetColor());
+            }
+            else {
+                System.out.print("|             ");
+            }
+            
+            if ( board[i][4] != null){
+                System.out.printf("| %10s  ", board[i][4].GetColor());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][5] != null){
+                System.out.printf("| %10s  ", board[i][5].GetColor());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][6] != null){
+                System.out.printf("| %10s  ", board[i][6].GetColor());
+                System.out.print("|" );
+                System.out.println("");
+            }
+            else {
+                System.out.print("|             |");
+                System.out.println("");
+            }
+
+            // printing the pattern of the cards
+            if ( board[i][0] != null){
+                System.out.printf("| %10s  ", board[i][0].GetPattern());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][1] != null){
+                System.out.printf("| %10s  ", board[i][1].GetPattern());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][2] != null){
+                System.out.printf("| %10s  ", board[i][2].GetPattern());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][3] != null){
+                System.out.printf("| %10s  ", board[i][3].GetPattern());
+            }
+            else {
+                System.out.print("|             ");
+            }
+            
+            if ( board[i][4] != null){
+                System.out.printf("| %10s  ", board[i][4].GetPattern());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][5] != null){
+                System.out.printf("| %10s  ", board[i][5].GetPattern());
+            }
+            else {
+                System.out.print("|             ");
+            }
+
+            if ( board[i][6] != null){
+                System.out.printf("| %10s  ", board[i][6].GetPattern());
+                System.out.print("|" );
+                System.out.println("");
+            }
+            else {
+                System.out.print("|             |");
+                System.out.println("");
+            }
+            System.out.println("===================================================================================================");
+
+                
         }
     }
     
     /* Displays the stockpile on the screen
      * @param stockpile - The array that contains Card objects representing the stockpile */
     public void DisplayStockpile(Card[] stockpile, int currCardPos) {
-      System.out.print("STOCKPILE");
+      System.out.println("STOCKPILE");
       System.out.println(stockpile[currCardPos].GetNumber());
       System.out.println(stockpile[currCardPos].GetColor());
       System.out.println(stockpile[currCardPos].GetPattern());
