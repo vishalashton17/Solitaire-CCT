@@ -18,20 +18,12 @@ public class SolitaireMain {
 
         displayer.GameHeader(); // Displays game header
 
-        // Get the number of rounds
-        do {
-            System.out.print("Number of rounds to play: ");
-            rounds = input.nextInt();
-            // Error checking and validation
-            if (rounds <= 0) {
-                System.out.println("ERROR: Invalid number of rounds!");
-            }
-        } while (rounds <= 0);
-
         sol = new Solitaire(); // Initialize Solitaire object
 
+        System.out.println("initalizing game");
         // Initialize the game
         sol.InitializeGame();
+
 
         // Display the initial game state
         displayer.DisplayBoard(sol.GetBoard());
