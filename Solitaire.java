@@ -12,6 +12,7 @@ public class Solitaire {
   private int round;               // Keeps track of the current round
   private int currCardPos;         // Keeps track of the current card position
   private Card[] temp;        // Array to store cards when they are first created
+ 
   
   
   //======================= CONSTRUCTOR =======================//
@@ -25,7 +26,34 @@ public class Solitaire {
   }
 
   //====================== PRIVATE METHOD =======================//
- 
+  private boolean IsCardInPiles(int rank, int pattern) {
+    Card[] piles;
+    // Determine the index of the pile based on the suit
+    switch (pattern) {
+        case 0: // Diamonds
+            piles = waste[0];
+            break;
+        case 1: // Hearts
+            piles = waste[1];
+            break;
+        case 2: // Clubs
+            piles = waste[2];
+            break;
+        case 3: // Spades
+            piles = waste[3];
+            break;
+        default:
+            return false; // Invalid suit
+    }
+    
+    // Check if the card with the given rank is in the foundation pile
+    for (Card card : piles) {
+        if (card != null && card.GetNumber() == rank) {
+            return true; // Card found in the foundation pile
+        }
+    }
+    return false; // Card not found in the foundation pile
+}
 
   //====================== PUBLIC METHOD =======================//
   // Initializes the game
@@ -140,14 +168,42 @@ public class Solitaire {
   /* Checks if the game is won
    * @return - true if the game is won
              - false otherwise */
-  public boolean CheckIfWon() {
-    return false;
-  }
-  
+             public boolean CheckIfWon() {
+              // check the 7 piles
+              for (int suit = 0; suit < 4; suit++) {
+                  //  foundation pile has all cards from Ace to King?
+                  for (int rank = 1; rank <= 13; rank++) {
+                      if (!IsCardInPiles(rank, suit)) {
+                          return false; // 
+                      }
+                  }
+              }
+              return true; // All cards are in the foundation piles
+          }
+   /* The movement of the card within the board
+   * @return - -1 if the column number is invalid
+             - 0 if the movement is not complete
+             - 1 if the movement is complete */
+    public int BoardCardMovement(int fromPile, int toPile){
+      return 0;
+    }
+
+   /* The movement of the card from the stockpile
+   * @return - -1 if the column number is invalid
+             - 0 if the movement is not complete
+             - 1 if the movement is complete */
+    public int StockpileCardMovement(int toPile){
+      return 0;
+    }
+
+
   /* Adds score to the game */
   public void AddScore() {
 
   }
+
+
+
   public Card[][] GetBoard(){
     return board;
   }
@@ -163,7 +219,7 @@ public class Solitaire {
   public int GetRound(){
     return round;
   }
-  public int GetCurr(){
+  public int GetCurrRound(){
     return round;
   }
 
