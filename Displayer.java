@@ -300,6 +300,7 @@ public class Displayer {
      * @param stockpile - The array that contains Card objects representing the stockpile */
     public void DisplayStockpile(Card[] stockpile, int currCardPos) {
       System.out.println("STOCKPILE");
+      System.out.println("==============");
       System.out.print("| ");
       System.out.printf("%10d", stockpile[currCardPos].GetNumber());
       System.out.print(" |");
@@ -312,6 +313,7 @@ public class Displayer {
       System.out.printf("%10s", stockpile[currCardPos].GetColor());
       System.out.print(" |");
       System.out.println("");
+      System.out.println("==============");
 
     }
     
@@ -320,22 +322,20 @@ public class Displayer {
     public void DisplayWaste(Card[][] waste) {
         System.out.println("WASTE");
         System.out.println("==============================================");
-        for(int i = 0; i<13 ; i++){
-            for (int k = 0; k<4; k++){
-                if (waste[i][k] != null && waste[i+1][k] == null){
-                    System.out.printf("%10d", waste[i][k].GetNumber());
-                    System.out.printf("%10s", waste[i][k].GetPattern());
-                    System.out.printf("%10s", waste[i][k].GetColor());
+        for(int i = 0; i<4 ; i++){
+            for (int k = 0; k<13; k++) {
+                if (waste[k][i] != null) {
+                }
+                else if( (waste[k][i] == null) && !(k == 0)) {
+                    if( (waste[k][i] == null) && !(k == 0) && waste[k-1][i] != null) {
+                        System.out.print(waste[k-1][i].GetNumber());
+                        System.out.print(waste[k-1][i].GetColor());
+                        System.out.print(waste[k-1][i].GetPattern());
+                    }
+                    break;
                 }
                 else {
-                    System.out.print("| ");
-                    System.out.printf("%10s", "");
-                    System.out.print("| ");
-                    System.out.printf("%10s", "");
-                    System.out.print("| ");
-                    System.out.printf("%10s", "");
-                    System.out.print(" |");
-                    
+                    System.out.println("Nothin here mate");
                 }
             }
             System.out.println("");
