@@ -189,7 +189,7 @@ public class Displayer {
             }
 
             //7
-            if ( board[i][6] != null && board[i][0].GetFacing() == 0){
+            if ( board[i][6] != null && board[i][6].GetFacing() == 0){
                 System.out.print("| Facing down ");
                 System.out.print("|" );
                 System.out.println("");
@@ -276,7 +276,7 @@ public class Displayer {
             }
 
             //7
-            if ( board[i][6] != null && board[i][0].GetFacing() == 0){
+            if ( board[i][6] != null && board[i][6].GetFacing() == 0){
                 System.out.print("| Facing down ");
                 System.out.print("|" );
                 System.out.println("");
@@ -328,14 +328,36 @@ public class Displayer {
                 }
                 else if( (waste[k][i] == null) && !(k == 0)) {
                     if( (waste[k][i] == null) && !(k == 0) && waste[k-1][i] != null) {
-                        System.out.print(waste[k-1][i].GetNumber());
-                        System.out.print(waste[k-1][i].GetColor());
-                        System.out.print(waste[k-1][i].GetPattern());
+                        System.out.println("==============");
+                        System.out.print("| ");
+                        System.out.printf("%10d", waste[k-1][i].GetNumber());
+                        System.out.print(" |");
+                        System.out.println("");
+                        System.out.print("| ");
+                        System.out.printf("%10s", waste[k-1][i].GetPattern());
+                        System.out.print(" |");
+                        System.out.println("");
+                        System.out.print("| ");
+                        System.out.printf("%10s", waste[k-1][i].GetColor());
+                        System.out.print(" |");
+                        System.out.println("");
+                        System.out.println("==============");
                     }
                     break;
                 }
                 else {
-                    System.out.println("Nothin here mate");
+                    System.out.println("=========");
+                    System.out.print("| ");
+                    System.out.print("Empty");
+                    System.out.print(" |");
+                    System.out.println("");
+                    System.out.print("| ");
+                    System.out.print("      |");
+                    System.out.println("");
+                    System.out.print("| ");
+                    System.out.print("      |");
+                    System.out.println("");
+                    System.out.println("=========");
                 }
             }
             System.out.println("");
