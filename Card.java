@@ -15,7 +15,7 @@ public Card( int number, String pattern, String color) {
     this.number = number;
     this.pattern = pattern;
     this.color = color;
-    facing = 0;
+    facing = 1;
 }
 //============= Public Methods ================   
   /* Get the Card number
@@ -37,7 +37,12 @@ public Card( int number, String pattern, String color) {
    * @return - The where card facing 0 for down, 1 for up. */
   public int GetFacing() {
     return facing;
-  }
+  }  
+  /* Get where the Card is facing
+  * @return - The where card facing 0 for down, 1 for up. */
+ public void SetFacing() {
+   facing = 1;
+ }
   /* Get the Card color
    * @return - The score */
   public abstract int CalcScore();
