@@ -48,23 +48,29 @@ public int GetFacing() {
  * @return - The score */
 public abstract int CalcScore();
 
-public boolean CanMoveOnto(Card targetCard) {
-    // Check if the target card is null or if it's facing down
-    if (targetCard == null || targetCard.GetFacing() == 0) {
-        return false; // Cannot move onto a null or face-down card
-    }
-    
-    // Check if the target card's number is one less than this card's number
-    if (this.number - targetCard.GetNumber() == 1) {
-        // Check if the colors are opposite
-        if (this.color.equals("red") && targetCard.GetColor().equals("black")) {
-            return true; // Can move onto the target card
-        } else if (this.color.equals("black") && targetCard.GetColor().equals("red")) {
-            return true; // Can move onto the target card
-        }
-    }
-    
-    return false; // Cannot move onto the target card
+
+public boolean CanMoveOnto(Card targetCard, Card toCard) {
+  // Check if the target card is null or if it's facing down
+ if (targetCard == null || targetCard.GetFacing() == 0) {
+     return false; // Cannot move onto a null or face-down card
+ }
+
+ // Special case for Ace and King
+ if ((this.number == 1 && toCard.GetNumber() == 13) || (this.number == 13 && toCard.GetNumber() == 1)) {
+     return true; // Ace can be placed on a King and vice versa
+ }
+
+ // Check if the target card's number is one less than this card's number
+ if (toCard.GetNumber() - targetCard.GetNumber() == 1) {
+
+     // Check if the colors are opposite
+     if ((toCard.GetColor().equals("red") && this.color.equals("black")) || 
+         (toCard.GetColor().equals("black") && this.color.equals("red"))) {
+         return true; // Can move onto the target card
+     }
+ }
+
+ return false; // Cannot move onto the target card
 }
 
 }
