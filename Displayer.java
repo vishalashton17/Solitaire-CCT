@@ -17,11 +17,11 @@ public class Displayer {
     /* Display the player's score on the screen 
      * @param o - Object that represents player o  
      * @param x - Object that represents player x */
-    public void ScoreBoard(Player one, Player two) {
+    public void ScoreBoard(Player one, Player two , Player currPlayer) {
         System.out.println("CURRENT SCORE");
         System.out.println();
-        System.out.println("Player One: " + one.GetScore() + " points");
-        System.out.println("Player Two: " + two.GetScore() + " points");
+        System.out.println("Player One ( " + one.GetName() + " ) : " + one.GetScore() + " points");
+        System.out.println("Player Two ( " + two.GetName() + " ) : " + two.GetScore() + " points");
     }
     
     /* Display the current round number
@@ -192,15 +192,133 @@ public class Displayer {
             if ( board[i][6] != null && board[i][6].GetFacing() == 0){
                 System.out.print("| Facing down ");
                 System.out.print("|" );
+                if (i == 0) {
+                    System.out.print(" A");
+                }
+                else if (i == 1) {
+                    System.out.print(" B");
+                }
+                else if (i == 2) {
+                    System.out.print(" C");
+                }
+                else if (i == 3) {
+                    System.out.print(" D");
+                }
+                else if (i == 4) {
+                    System.out.print(" E");
+                }
+                else if (i == 5) {
+                    System.out.print(" F");
+                }
+                else if (i == 6) {
+                    System.out.print(" G");
+                }
+                else if (i == 7) {
+                    System.out.print(" H");
+                }
+                else if (i == 8) {
+                    System.out.print(" I");
+                }
+                else if (i == 9) {
+                    System.out.print(" K");
+                }
+                else if (i == 10) {
+                    System.out.print(" L");
+                }
+                else if (i == 11) {
+                    System.out.print(" M");
+                }
+                else if (i == 12) {
+                    System.out.print(" N");
+                }
                 System.out.println("");
             }
             else if (board[i][6] != null) {
                 System.out.printf("| %10s  ", board[i][6].GetColor());
                 System.out.print("|" );
+                if (i == 0) {
+                    System.out.print(" A");
+                }
+                else if (i == 1) {
+                    System.out.print(" B");
+                }
+                else if (i == 2) {
+                    System.out.print(" C");
+                }
+                else if (i == 3) {
+                    System.out.print(" D");
+                }
+                else if (i == 4) {
+                    System.out.print(" E");
+                }
+                else if (i == 5) {
+                    System.out.print(" F");
+                }
+                else if (i == 6) {
+                    System.out.print(" G");
+                }
+                else if (i == 7) {
+                    System.out.print(" H");
+                }
+                else if (i == 8) {
+                    System.out.print(" I");
+                }
+                else if (i == 9) {
+                    System.out.print(" K");
+                }
+                else if (i == 10) {
+                    System.out.print(" L");
+                }
+                else if (i == 11) {
+                    System.out.print(" M");
+                }
+                else if (i == 12) {
+                    System.out.print(" N");
+                }
                 System.out.println("");
             }
             else {
                 System.out.print("|             |");
+                if (i == 0) {
+                    System.out.print(" A");
+                }
+                else if (i == 1) {
+                    System.out.print(" B");
+                }
+                else if (i == 2) {
+                    System.out.print(" C");
+                }
+                else if (i == 3) {
+                    System.out.print(" D");
+                }
+                else if (i == 4) {
+                    System.out.print(" E");
+                }
+                else if (i == 5) {
+                    System.out.print(" F");
+                }
+                else if (i == 6) {
+                    System.out.print(" G");
+                }
+                else if (i == 7) {
+                    System.out.print(" H");
+                }
+                else if (i == 8) {
+                    System.out.print(" I");
+                }
+                else if (i == 9) {
+                    System.out.print(" K");
+                }
+                else if (i == 10) {
+                    System.out.print(" L");
+                }
+                else if (i == 11) {
+                    System.out.print(" M");
+                }
+                else if (i == 12) {
+                    System.out.print(" N");
+                }
+                
                 System.out.println("");
             }
 
