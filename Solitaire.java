@@ -97,18 +97,47 @@ public class Solitaire {
     }
 
     private void RandomizeBoard() {
-        for (int col = 0; col < 7; col++) {
-            for (int row = 0; row <= col; row++) {
-                for (int i = 0; i < 52; i++) {
-                    if (temp[i] != null) {
-                        board[row][col] = temp[i];
-                        temp[i] = null;
-                        break;
+            // Shuffle the remaining cards in the temp array
+            Random rand = new Random();
+            int count = 0;
+            boolean run = true;
+    
+            // Collect non-null cards
+            Card[] remainingCards = new Card[28];
+            while (run){
+              for (int i = 0; i < 52; i++){
+                if (temp[i] != null && count < 28) {
+                  System.out.println(temp[i].GetNumber());
+                    remainingCards[count] = temp[i];
+                    count ++;
+                }
+                run = false;
+              }
+              System.out.println("done");
+            }
+    
+            // Shuffle the remaining cards
+            for (int i = remainingCards.length - 1; i > 0; i--) {
+                int index = rand.nextInt(i + 1);
+                Card tempCard = remainingCards[index];
+                remainingCards[index] = remainingCards[i];
+                remainingCards[i] = tempCard;
+            }
+    
+            count = 0;
+            for (int col = 0; col < 7; col++) {
+                for (int row = 0; row <= col; row++) {
+                    for (int i = 0; i < 52; i++) {
+                        if (temp[i] != null) {
+                            board[row][col] = temp[i];
+                            temp[i] = null;
+                            break;
+                        }
                     }
+                    board[row][col] = remainingCards[count++];
                 }
             }
         }
-    }
 
     /* Removes a card from the stockpile
      * @param card - The card to be removed */
