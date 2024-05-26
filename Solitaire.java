@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -9,10 +8,9 @@ public class Solitaire {
     private Card[][] waste; // Array to represent the waste pile
     private Card[] stockpile; // Array to represent the stockpile
     private Player[] allPlayers; // An array that stores all the player objects
-    private int round; // Keeps track of the current round
     private int currCardPos; // Keeps track of the current card position
+    private Player currPlayer;         // Keeps track of the current player
     private Card[] temp; // Array to store cards when they are first created
-    private String currPlayer;
 
     //======================= CONSTRUCTOR =======================//
     // Initialize the game's instance variables. 
@@ -55,11 +53,16 @@ public class Solitaire {
     }
 
     //====================== PUBLIC METHOD =======================//
-    // Initializes the game
-    public void InitializeGame(String player1, String player2) {
+
+    public void SetPlayers(String player1, String player2){
+        allPlayers = new Player[2];
         allPlayers[0] = new Player(player1);
         allPlayers[1] = new Player(player2);
-        
+        currPlayer = allPlayers[0];
+    }
+
+    // Initializes the game
+    public void InitializeGame() {
         for (int i = 0; i < 4; i++) {
             for (int k = 0; k < 13; k++) {
                 if (i == 0) {
@@ -86,6 +89,9 @@ public class Solitaire {
         board[4][4].SetFacing();
         board[5][5].SetFacing();
         board[6][6].SetFacing();
+        
+
+
     }
 
 
@@ -190,93 +196,119 @@ public class Solitaire {
     * @return - -1 if the column number is invalid
               - 0 if the movement is not complete
               - 1 if the movement is complete */
-   public int BoardCardMovement(int fromPile, int toPile) {
-    // Check if the column numbers are valid
-    if (fromPile < 0 || fromPile >= 7 || toPile < 0 || toPile >= 7) {
-        System.out.println("Invalid column numbers.");
-        return -1; // Invalid column numbers
-    }
-    
-    // Check if there are cards in the source pile
-    if (board[0][fromPile] == null) {
-        System.out.println("Source pile is empty.");
-        return -1; // Source pile is empty
-    }
-    
-    // Check if the destination pile is empty or if the move is valid
-    if (board[0][toPile] == null || board[0][toPile].CanMoveOnto(board[0][fromPile])) {
-        // Move the card
-        for (int row = 12; row >= 0; row--) {
-            if (board[row][fromPile] != null) {
-                board[row][toPile] = board[row][fromPile];
-                board[row][fromPile] = null;
-                return 1; // Movement successful
-            }
-        }
-    } else {
-        System.out.println("Invalid move.");
-        return 0; // Invalid move
-    }
-    
-    System.out.println("Unable to move the card.");
-    return 0; // Unable to move the card
-}
+              public int BoardCardMovement(int fromPile, int toPile) {
+                System.out.println("1- " + board[0][fromPile] + "2- " + board[0][toPile]);
+               // Check if the column numbers are valid
+               if (fromPile < 0 || fromPile >= 7 || toPile < 0 || toPile >= 7) {
+                   return -1; // Invalid column numbers
+               }
+               
+               // Check if there are cards in the source pile
+               if (board[0][fromPile] == null) {
+                   return -1; // Source pile is empty
+               }
+               
+               // Check if the destination pile is empty or if the move is valid
+               System.out.println("1- " + board[0][fromPile] + "2- " + board[0][toPile]);
+               if (board[12][toPile] == null || board[12][toPile].CanMoveOnto(board[0][fromPile], board[12][toPile])) {
+                   // Move the card
+                 System.out.println("Called card");
+                   for (int row = 12; row >= 0; row--) {
+                       if (board[row][fromPile] != null) {
+                           board[row][toPile] = board[row][fromPile];
+                           board[row][fromPile] = null;
+                           return 1; // Movement successful
+                       }
+                   }
+               } else {
+                   return 0; // Invalid move
+               }
+               
+               return 0; // Unable to move the card
+           }
    
 
     /* The movement of the card from the stockpile
     * @return - -1 if the column number is invalid
               - 0 if the movement is not complete
               - 1 if the movement is complete */
-   public int StockpileCardMovement(int toPile) {
-    // Check if the column number is valid
-    if (toPile < 0 || toPile >= 7) {
-        System.out.println("Invalid column number.");
-        return -1; // Invalid column number
-    }
-    
-    // Check if the stockpile is empty
-    if (stockpile[currCardPos] == null) {
-        System.out.println("Stockpile is empty.");
-        return -1; // Stockpile is empty
-    }
-    
-    // Check if the destination pile is empty or if the move is valid
-    if (board[0][toPile] == null || board[0][toPile].CanMoveOnto(stockpile[currCardPos])) {
-        // Move the card from the stockpile to the board
-        for (int row = 12; row >= 0; row--) {
-            if (board[row][toPile] == null) {
-                board[row][toPile] = stockpile[currCardPos];
-                stockpile[currCardPos] = null;
-                currCardPos++;
-                return 1; // Movement successful
+              public int StockpileCardMovement(int toPile) {
+                // Check if the column number is valid
+                if (toPile < 0 || toPile >= 7) {
+                    return -1; // Invalid column number
+                }
+                
+                // Check if the stockpile is empty
+                if (stockpile[currCardPos] == null) {
+                    return -1; // Stockpile is empty
+                }
+                
+                // Check if the destination pile is empty or if the move is valid
+                if (board[0][toPile] == null || board[0][toPile].CanMoveOnto(stockpile[currCardPos], board[0][toPile])) {
+                    // Move the card from the stockpile to the board
+                    for (int row = 12; row >= 0; row--) {
+                        if (board[row][toPile] == null) {
+                            board[row][toPile] = stockpile[currCardPos];
+                            stockpile[currCardPos] = null;
+                            currCardPos++;
+                            return 1; // Movement successful
+                        }
+                    }
+                } else {
+                    return 0; // Invalid move
+                }
+            
+                return 0; // Unable to move the card
             }
-        }
-    } else {
-        System.out.println("Invalid move.");
-        return 0; // Invalid move
-    }
-    
-    System.out.println("Unable to move the card.");
-    return 0; // Unable to move the card
-}
-
 
 
     /* Adds score to the game */
     public void AddScore() {
+        String pattern = stockpile[currCardPos].GetPattern();
+        int score = 0;
+        if (pattern.equals("diamond")) {
+            score = 10;
+        } else if (pattern.equals("heart")) {
+            score = 15;
+        } else if (pattern.equals("spade")) {
+            score = 20;
+        } else if (pattern.equals("club")) {
+            score = 25;
+        } else {
+            score = 5;
+        }
 
-    }
+        currPlayer.AddScore(score);
+    
+}
 
     /* Switch player's turn to the next player (If current player is player 1, then it 
     * switches to player 2. If current player is player 2, then it switches to player 1) */   
     public void SwitchPlayer() {
     if (currPlayer == allPlayers[0]) {
-    currPlayer = allPlayers[1];
-} 
+        currPlayer = allPlayers[1]; // Switch to player 2
+    } 
     else {
-    currPlayer = allPlayers[0];
+        currPlayer = allPlayers[0]; // Switch to player 1
+    }
 }
-  }
+  
+  
+public String GetWinner() {
+    
+    int player1Score = allPlayers[0].GetScore();
+    int player2Score = allPlayers[1].GetScore();
+
+    if (player1Score > player2Score) {
+        return allPlayers[0].GetName(); 
+    } 
+    else if (player1Score < player2Score) {
+        return allPlayers[1].GetName(); 
+    } 
+    else {
+        return "Tie"; 
+    }
+}
 
     public Card[][] GetBoard() {
         return board;
@@ -290,15 +322,8 @@ public class Solitaire {
     public Player[] GetPlayers() {
         return allPlayers;
     }
-    public int GetRound() {
-        return round;
-    }
-    public int GetCurrRound() {
-        return round;
-    }
-
     public String GetCurrPlayer() {
-        return("");
+        return currPlayer.GetName();
     }
 
 }
