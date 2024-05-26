@@ -57,6 +57,9 @@ public class Solitaire {
     //====================== PUBLIC METHOD =======================//
     // Initializes the game
     public void InitializeGame(String player1, String player2) {
+        allPlayers[0] = new Player(player1);
+        allPlayers[1] = new Player(player2);
+        
         for (int i = 0; i < 4; i++) {
             for (int k = 0; k < 13; k++) {
                 if (i == 0) {
@@ -83,9 +86,6 @@ public class Solitaire {
         board[4][4].SetFacing();
         board[5][5].SetFacing();
         board[6][6].SetFacing();
-        
-
-
     }
 
 
