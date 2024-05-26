@@ -32,9 +32,9 @@ public static void main(String[] args) {
     
     while(!sol.CheckIfWon()) {
         // Display the initial game state
-        displayer.DisplayBoard(sol.GetBoard());
         displayer.DisplayStockpile(sol.GetStockpile(), sol.GetCurrStockpilePos());
         displayer.DisplayWaste(sol.GetWaste());
+        displayer.DisplayBoard(sol.GetBoard());
 
         // Get and display current player
         String currPlayer = sol.GetCurrPlayer();
