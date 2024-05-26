@@ -12,8 +12,7 @@ public class Solitaire {
     private int round; // Keeps track of the current round
     private int currCardPos; // Keeps track of the current card position
     private Card[] temp; // Array to store cards when they are first created
-
-
+    private String currPlayer;
 
     //======================= CONSTRUCTOR =======================//
     // Initialize the game's instance variables. 
@@ -57,7 +56,7 @@ public class Solitaire {
 
     //====================== PUBLIC METHOD =======================//
     // Initializes the game
-    public void InitializeGame() {
+    public void InitializeGame(String player1, String player2) {
         for (int i = 0; i < 4; i++) {
             for (int k = 0; k < 13; k++) {
                 if (i == 0) {
@@ -108,39 +107,17 @@ public class Solitaire {
     }
 
     public void RandomizeBoard() {
-        // Shuffle the remaining cards in the temp array
-        Random rand = new Random();
-        int count = 0;
-        boolean run = true;
-
-        // Collect non-null cards
-        Card[] remainingCards = new Card[28];
-        while (run){
-          for (int i = 0; i < 52; i++){
-            if (temp[i] != null && count < 28) {
-              System.out.println(temp[i].GetNumber());
-                remainingCards[count] = temp[i];
-                count ++;
-            }
-            run = false;
-          }
-          System.out.println("done");
-        }
-
-        // Shuffle the remaining cards
-        for (int i = remainingCards.length - 1; i > 0; i--) {
-            int index = rand.nextInt(i + 1);
-            Card tempCard = remainingCards[index];
-            remainingCards[index] = remainingCards[i];
-            remainingCards[i] = tempCard;
-        }
-
-        count = 0;
         for (int col = 0; col < 7; col++) {
             for (int row = 0; row <= col; row++) {
-                board[row][col] = remainingCards[count++];
+                for (int i = 0; i < 52; i++) {
+                    if (temp[i] != null) {
+                        board[row][col] = temp[i];
+                        temp[i] = null;
+                        break;
+                    }
+                }
             }
-          }
+        }
     }
 
     // Flips the top card from the stockpile to the waste pile 
@@ -207,21 +184,82 @@ public class Solitaire {
         }
         return true; // All cards are in the foundation piles
     }
+
+
     /* The movement of the card within the board
     * @return - -1 if the column number is invalid
               - 0 if the movement is not complete
               - 1 if the movement is complete */
-    public int BoardCardMovement(int fromPile, int toPile) {
-        return 0;
+   public int BoardCardMovement(int fromPile, int toPile) {
+    // Check if the column numbers are valid
+    if (fromPile < 0 || fromPile >= 7 || toPile < 0 || toPile >= 7) {
+        System.out.println("Invalid column numbers.");
+        return -1; // Invalid column numbers
     }
+    
+    // Check if there are cards in the source pile
+    if (board[0][fromPile] == null) {
+        System.out.println("Source pile is empty.");
+        return -1; // Source pile is empty
+    }
+    
+    // Check if the destination pile is empty or if the move is valid
+    if (board[0][toPile] == null || board[0][toPile].CanMoveOnto(board[0][fromPile])) {
+        // Move the card
+        for (int row = 12; row >= 0; row--) {
+            if (board[row][fromPile] != null) {
+                board[row][toPile] = board[row][fromPile];
+                board[row][fromPile] = null;
+                return 1; // Movement successful
+            }
+        }
+    } else {
+        System.out.println("Invalid move.");
+        return 0; // Invalid move
+    }
+    
+    System.out.println("Unable to move the card.");
+    return 0; // Unable to move the card
+}
+   
 
     /* The movement of the card from the stockpile
     * @return - -1 if the column number is invalid
               - 0 if the movement is not complete
               - 1 if the movement is complete */
-    public int StockpileCardMovement(int toPile) {
-        return 0;
+   public int StockpileCardMovement(int toPile) {
+    // Check if the column number is valid
+    if (toPile < 0 || toPile >= 7) {
+        System.out.println("Invalid column number.");
+        return -1; // Invalid column number
     }
+    
+    // Check if the stockpile is empty
+    if (stockpile[currCardPos] == null) {
+        System.out.println("Stockpile is empty.");
+        return -1; // Stockpile is empty
+    }
+    
+    // Check if the destination pile is empty or if the move is valid
+    if (board[0][toPile] == null || board[0][toPile].CanMoveOnto(stockpile[currCardPos])) {
+        // Move the card from the stockpile to the board
+        for (int row = 12; row >= 0; row--) {
+            if (board[row][toPile] == null) {
+                board[row][toPile] = stockpile[currCardPos];
+                stockpile[currCardPos] = null;
+                currCardPos++;
+                return 1; // Movement successful
+            }
+        }
+    } else {
+        System.out.println("Invalid move.");
+        return 0; // Invalid move
+    }
+    
+    System.out.println("Unable to move the card.");
+    return 0; // Unable to move the card
+}
+
 
 
     /* Adds score to the game */
@@ -229,7 +267,16 @@ public class Solitaire {
 
     }
 
-
+    /* Switch player's turn to the next player (If current player is player 1, then it 
+    * switches to player 2. If current player is player 2, then it switches to player 1) */   
+    public void SwitchPlayer() {
+    if (currPlayer == allPlayers[0]) {
+    currPlayer = allPlayers[1];
+} 
+    else {
+    currPlayer = allPlayers[0];
+}
+  }
 
     public Card[][] GetBoard() {
         return board;
@@ -250,4 +297,10 @@ public class Solitaire {
         return round;
     }
 
+    public String GetCurrPlayer() {
+        return("");
+    }
+
 }
+
+
